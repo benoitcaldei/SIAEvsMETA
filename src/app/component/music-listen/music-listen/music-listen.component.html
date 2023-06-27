@@ -1,0 +1,35 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ fileTitle }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="progress-bar-container">
+      <mat-progress-bar [value]="progress" mode="determinate"></mat-progress-bar>
+    </div>
+    <div class="player-controls">
+      <button mat-icon-button (click)="playMusic()" [disabled]="isPlaying">
+        <mat-icon>play_arrow</mat-icon>
+      </button>
+      <button mat-icon-button (click)="pauseMusic()" [disabled]="!isPlaying">
+        <mat-icon>pause</mat-icon>
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+
+<div class="card-container">
+  <button class="card card-small" (click)="navigate()" tabindex="0">
+      <mat-icon>arrow_back</mat-icon>
+      <span>Back home</span>
+  </button>
+</div> 
+
+<div style=" padding-top: 200px">
+  <app-dashboard [showButton]="false"
+  [payPerViewValue]="payPerViewValue" [updatedPayPerViewValue]="updatedPayPerViewValue"
+  [companyBudgetValue]="companyBudgetValue" [advViews]="advViews" [marketingBudgetValue]="marketingBudgetValue"
+  [payPerListenValue]="payPerListenValue" [updatedPayPerListenValue]="updatedPayPerListenValue"
+  [musicianAccountValue]="musicianAccountValue"
+    ></app-dashboard>
+</div>

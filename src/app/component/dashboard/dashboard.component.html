@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="col">
+        <div>
+            <h3>Overview of Advertisement parameters</h3>
+        </div>
+        <mat-form-field>
+            <mat-label>Set new pay per view (WEI - Ξ)</mat-label>
+            <input matInput placeholder="Enter a pay per view number" type="number" [(ngModel)]="payPerViewValue">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Agreed per view (WEI - Ξ)</mat-label>
+            <input matInput placeholder="Pay per view value" type="number" [(ngModel)]="updatedPayPerViewValue"
+                [readonly]="true">
+        </mat-form-field>
+
+
+        <button *ngIf="showButton" class="card card-small"
+            (click)="updateValues.emit({payPerListenValue:0,payPerViewValue})" tabindex="0">
+            <span>Save</span>
+        </button>
+    </div>
+
+    <div class="col">
+        <div>
+            <h3>Pay per view setting</h3>
+        </div>
+        <mat-form-field>
+            <mat-label>Set new PayPer Listen (WEI - Ξ)</mat-label>
+            <input matInput placeholder="Define marketing amount" type="number" [(ngModel)]="payPerListenValue"
+                >
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>AgreedPayPer Listen (WEI - Ξ)</mat-label>
+            <input matInput placeholder="Define marketing amount" type="number" [(ngModel)]="updatedPayPerListenValue"
+                [readonly]="true">
+        </mat-form-field>
+
+        <button *ngIf="showButton" class="card card-small"
+            (click)="updateValues.emit({payPerListenValue,payPerViewValue:0})" tabindex="0">
+            <span>Save</span>
+        </button>
+
+    </div>
+    <div class="col">
+        <div>
+            <h3>Overview of Marketing Budget</h3>
+        </div>
+        <mat-form-field>
+            <mat-label>Contract Budget (WEI - Ξ)</mat-label>
+            <input matInput placeholder="Define marketing amount" type="number" [(ngModel)]="companyBudgetValue"
+                [readonly]="true">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Marketing Budget (WEI - Ξ)</mat-label>
+            <input matInput placeholder="Available marketing budget" [(ngModel)]="marketingBudgetValue"
+                [readonly]="true">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Musician earnings (WEI - Ξ)</mat-label>
+            <input matInput placeholder="Available marketing budget" [(ngModel)]="musicianAccountValue"
+                [readonly]="true">
+        </mat-form-field>
+    </div>
+    <div class="col">
+        <div>
+            <h3>Adv views</h3>
+        </div>
+        <mat-form-field>
+            <mat-label>Adv views</mat-label>
+            <input matInput placeholder="Available marketing budget" [(ngModel)]="advViews" [readonly]="true">
+        </mat-form-field>
+    </div>
+
+</div>

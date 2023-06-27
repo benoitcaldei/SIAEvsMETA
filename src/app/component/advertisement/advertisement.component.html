@@ -1,0 +1,41 @@
+<!-- <div class="full-screen-image">
+    <div class="header">
+        <h1>Adv views</h1>
+        <input type="number" [(ngModel)]="counterInput" placeholder="Enter Counter">
+    </div>
+    <img src="./../../../assets/barilla.jpg" alt="Full Screen Image">
+</div>
+
+<div class="bottom">
+    <div class="header">
+        <h4>Company Budget</h4>
+        <input type="number" [(ngModel)]="companyFund" placeholder="Enter Counter">
+    </div>
+    <div class="header">
+        <h4>Advertisement Budget</h4>
+        <input type="number" [(ngModel)]="marketingFund" placeholder="Enter Counter">
+    </div>
+</div> -->
+
+<div class="container">
+    <div class="title" #targetDiv>Adv views</div>
+    <div class="counter">{{counterInput}}</div>
+    <img class="image" src="./../../../assets/barilla.jpg" alt="image" />
+  </div>
+
+  <div class="container top">
+    <div class="small-title">Contract Budget (WEI - Ξ)</div>
+    <div class="counter-small">{{companyFund}}</div>
+  </div>
+  <div class="container">
+    <div class="small-title">Advertisement Budget(WEI - Ξ)</div>
+    <div class="counter-small">{{marketingFund}}</div>
+  </div>
+
+
+<div class="card-container">
+    <button class="card card-small" (click)="navigate()" tabindex="0">
+        <mat-icon>arrow_back</mat-icon>
+        <span>Back home</span>
+    </button>
+</div>

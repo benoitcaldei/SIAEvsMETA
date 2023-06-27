@@ -1,0 +1,42 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  .counter {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 50px;
+
+}
+
+.title {
+    margin-bottom: 50px;
+    font-size: 36px;
+    margin-top: 50px;
+    text-align: center;
+  }
+
+  .small-title {
+    margin-bottom: 10px;
+    font-size: 18px;
+    margin-top: 50px;
+    text-align: center;
+  }
+  .counter-small {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 10px;
+
+}
+
+
+
+  .image {
+    max-height: 10%;
+    max-width: 30%;
+    object-fit: contain;
+  }

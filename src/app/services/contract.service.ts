@@ -305,7 +305,9 @@ export class ContractService {
   ) {
     const accounts = await this.web3.eth.getAccounts();
     const gasPrice = await this.web3.eth.getGasPrice();
-    const nonce = await this.getCorrectNonce(accounts[0]);
+    console.log(accounts)
+    console.log(accounts[0])
+    // const nonce = await this.getCorrectNonce(accounts[0]);
     console.log(gasPrice);
     let txParams = {};
     txParams = {
@@ -314,7 +316,7 @@ export class ContractService {
       to: contractAddress,
       data: transaction.encodeABI(),
       gasPrice: gasPrice + 5000,
-      nonce,
+      // nonce,
     };
 
     if (value) {
@@ -322,17 +324,17 @@ export class ContractService {
     }
     const estimatedGas = await this.web3.eth.estimateGas(txParams);
     console.log(estimatedGas);
-    console.log('nonce', nonce);
+    // console.log('nonce', nonce);
     txParams = { ...txParams, gas: estimatedGas + 100000 }; // Add some buffer to ensure enough gas;
     try {
-      // const txHash = await this.web3.eth.sendTransaction(txParams);
-      const signedTx = await this.web3.eth.accounts.signTransaction(
-        txParams,
-        this.marketingBudgetPrivateKey
-      );
-      const receipt = await this.web3.eth.sendSignedTransaction(
-        signedTx.rawTransaction
-      );
+      const receipt = await this.web3.eth.sendTransaction(txParams);
+      // const signedTx = await this.web3.eth.accounts.signTransaction(
+      //   txParams,
+      //   this.marketingBudgetPrivateKey
+      // );
+      // const receipt = await this.web3.eth.sendSignedTransaction(
+      //   signedTx.rawTransaction
+      // );
       return receipt;
     } catch (error) {
       console.log(error);
@@ -363,8 +365,8 @@ export class ContractService {
     const gasPrice = await this.web3.eth.getGasPrice();
     console.log('gasPrice', gasPrice);
     console.log('fromAccount', fromAccount);
-    const nonce = await this.getCorrectNonce(fromAccount);
-    console.log('nonce', nonce);
+    // const nonce = await this.getCorrectNonce(fromAccount);
+    // console.log('nonce', nonce);
 
     const txParams = {
       from: toChecksumAddress(fromAccount),
@@ -372,13 +374,15 @@ export class ContractService {
       value: value,
       gasPrice: gasPrice + 5000,
       gas: 500000,
-      nonce,
+      gasLimit: 5000000,
+      // nonce,
     };
 
-    const estimatedGas = await this.web3.eth.estimateGas(txParams);
-    // console.log('estimatedGas', estimatedGas);
+    // const estimatedGas = await this.web3.eth.estimateGas(txParams);
+    // // console.log('estimatedGas', estimatedGas);
 
-    txParams.gas = estimatedGas + 500000; // Add some buffer to ensure enough gas;
+    // txParams.gas = estimatedGas + 500000; // Add some buffer to ensure enough gas;
+    console.log(txParams)
     try {
       // const txHash = await this.web3.eth.sendTransaction(txParams);
       const signedTx = await this.web3.eth.accounts.signTransaction(
@@ -458,7 +462,6 @@ export class ContractService {
   async getCompanyBudget() {
     // const value = await this.contract.methods.getCompanyFundValue().call();
     const balance = await this.web3.eth.getBalance(contractAddress);
-    console.log("the balance is ", balance)
     return balance;
   }
 
@@ -521,9 +524,9 @@ export class ContractService {
       this.web3.utils.toWei(value + '', 'ether')
     );
   }
-  index = 0;
-  async getCorrectNonce(address: any): Promise<number> {
-    this.index += 1;
-    return (await this.web3.eth.getTransactionCount(address)) + this.index;
-  }
+  // index = 0;
+  // async getCorrectNonce(address: any): Promise<number> {
+  //   this.index += 1;
+  //   return (await this.web3.eth.getTransactionCount(address)) + this.index;
+  // }
 }

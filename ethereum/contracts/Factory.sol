@@ -83,12 +83,6 @@ contract MusicPlatform {
         require(msg.value > 0, "Amount must be greater than 0");
         recipient.transfer(msg.value);
     }
-
-
-
-    // function payToAddress(address payable to, uint amount) public {
-    //     to.transfer(amount);
-    // }
     
     function getViews() public view returns (uint) {
         return advViews;

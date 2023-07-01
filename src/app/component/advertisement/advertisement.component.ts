@@ -37,9 +37,7 @@ export class AdvertisementComponent implements OnInit {
       entries.forEach(async entry => {
         if (entry.isIntersecting) {
           await this.contractService.increaseView()
-
           this.counterInput = await this.contractService.getViews()
-
           await this.contractService.deposit()
           console.log(4)
           this.companyFund = await this.contractService.getCompanyBudget()

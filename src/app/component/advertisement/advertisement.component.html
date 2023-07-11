@@ -1,21 +1,7 @@
-<!-- <div class="full-screen-image">
-    <div class="header">
-        <h1>Adv views</h1>
-        <input type="number" [(ngModel)]="counterInput" placeholder="Enter Counter">
-    </div>
-    <img src="./../../../assets/barilla.jpg" alt="Full Screen Image">
-</div>
-
-<div class="bottom">
-    <div class="header">
-        <h4>Company Budget</h4>
-        <input type="number" [(ngModel)]="companyFund" placeholder="Enter Counter">
-    </div>
-    <div class="header">
-        <h4>Advertisement Budget</h4>
-        <input type="number" [(ngModel)]="marketingFund" placeholder="Enter Counter">
-    </div>
-</div> -->
+<div class="spinner-container"  *ngIf="isLoading">
+    <mat-spinner diameter="48" id="my-spinner"></mat-spinner>
+  </div>
+  
 
 <div class="container">
     <div class="title" #targetDiv>Adv views</div>

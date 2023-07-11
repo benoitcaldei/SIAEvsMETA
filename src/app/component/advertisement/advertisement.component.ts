@@ -14,7 +14,7 @@ export class AdvertisementComponent implements OnInit {
   marketingFund:number =0
 
   @ViewChild('targetDiv', { static: true }) targetDiv: ElementRef | undefined;
-
+  isLoading = false;
 
   constructor(private _router: Router,
     private contractService: ContractService, ) { 
@@ -36,12 +36,14 @@ export class AdvertisementComponent implements OnInit {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(async entry => {
         if (entry.isIntersecting) {
+          this.isLoading = true;
           await this.contractService.increaseView()
           this.counterInput = await this.contractService.getViews()
           await this.contractService.deposit()
           console.log(4)
           this.companyFund = await this.contractService.getCompanyBudget()
           this.marketingFund = await this.contractService.getMktBudget()
+          this.isLoading = false;
         } 
       });
     }, options);
